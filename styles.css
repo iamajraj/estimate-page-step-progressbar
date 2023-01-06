@@ -5,7 +5,8 @@
 }
 
 :root {
-    --primary-color: #234dc1;
+    --primary-color: #6168ff;
+    --primary-secondary: #febd44;
 }
 
 body {
@@ -29,6 +30,8 @@ nav .top {
 }
 nav .top .logo {
     width: 160px;
+    height: 80px;
+    object-fit: cover;
 }
 
 nav .top .back-btn {
@@ -78,12 +81,12 @@ nav .stepper li.active::before {
     width: 15px;
     height: 15px;
     top: 0;
-    border: 6px solid var(--primary-color);
+    border: 6px solid var(--primary-secondary);
     background-color: white;
 }
 
 nav .stepper li.done::before {
-    background-color: var(--primary-color);
+    background-color: var(--primary-secondary);
     display: flex;
     align-items: center;
     content: url('https://www.innoapps.com/done.6716c30c856ba88ebcc3.svg');
@@ -105,7 +108,7 @@ nav .stepper li:not(:nth-child(4)):after {
 } */
 
 nav .stepper li.done:not(:nth-child(4))::after {
-    background: var(--primary-color);
+    background: var(--primary-secondary);
 }
 
 nav .stepper li p {
@@ -114,7 +117,7 @@ nav .stepper li p {
 }
 
 nav .stepper li.active p {
-    color: var(--primary-color);
+    color: var(--primary-secondary);
 }
 
 main {
@@ -255,7 +258,7 @@ main {
 
 .btn.next,
 .btn.form-submit {
-    background-color: var(--primary-color);
+    background-color: var(--primary-secondary);
 }
 
 .btn::before {
