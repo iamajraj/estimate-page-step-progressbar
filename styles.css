@@ -6,6 +6,7 @@
 
 :root {
     --primary-color: #6168ff;
+    --color-green: #487440;
     --primary-secondary: #febd44;
 }
 
@@ -81,12 +82,12 @@ nav .stepper li.active::before {
     width: 15px;
     height: 15px;
     top: 0;
-    border: 6px solid var(--primary-secondary);
+    border: 6px solid var(--color-green);
     background-color: white;
 }
 
 nav .stepper li.done::before {
-    background-color: var(--primary-secondary);
+    background-color: var(--color-green);
     display: flex;
     align-items: center;
     content: url('https://www.innoapps.com/done.6716c30c856ba88ebcc3.svg');
@@ -108,7 +109,7 @@ nav .stepper li:not(:nth-child(4)):after {
 } */
 
 nav .stepper li.done:not(:nth-child(4))::after {
-    background: var(--primary-secondary);
+    background: var(--color-green);
 }
 
 nav .stepper li p {
@@ -117,7 +118,7 @@ nav .stepper li p {
 }
 
 nav .stepper li.active p {
-    color: var(--primary-secondary);
+    color: var(--color-green);
 }
 
 main {
