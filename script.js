@@ -32,14 +32,14 @@ const typeData = {
     title: 'What type of project are you building?',
     imgs: {
         notSelected: [
-            'https://www.innoapps.com/assets/images/web-developement.svg',
-            'https://www.innoapps.com/assets/images/mobile-app.svg',
-            'https://www.innoapps.com/assets/images/other.svg',
+            '/assets/web-developement.svg',
+            '/assets/mobile-app.svg',
+            '/assets/other.svg',
         ],
         selected: [
-            'https://www.innoapps.com/assets/images/web-developement-clicked.svg',
-            'https://www.innoapps.com/assets/images/mobile-app-clicked.svg',
-            'https://www.innoapps.com/assets/images/other-clicked.svg',
+            '/assets/web-developement-clicked.svg',
+            '/assets/mobile-app-clicked.svg',
+            '/assets/other-clicked.svg',
         ],
     },
     texts: ['Desktop', 'Mobile', 'Other'],
@@ -49,14 +49,14 @@ const scopeData = {
     title: 'What is the scope of your project?',
     imgs: {
         notSelected: [
-            'https://www.innoapps.com/assets/images/front-end.svg',
-            'https://www.innoapps.com/assets/images/backend.svg',
-            'https://www.innoapps.com/assets/images/design-estimate.svg',
+            '/assets/front-end.svg',
+            '/assets/backend.svg',
+            '/assets/design-estimate.svg',
         ],
         selected: [
-            'https://www.innoapps.com/assets/images/front-end-clicked.svg',
-            'https://www.innoapps.com/assets/images/back-end-clicked.svg',
-            'https://www.innoapps.com/assets/images/backend-design-clicked.svg',
+            '/assets/front-end-clicked.svg',
+            '/assets/back-end-clicked.svg',
+            '/assets/backend-design-clicked.svg',
         ],
     },
     texts: ['Front-End', 'Back-End', 'Design'],
@@ -66,14 +66,14 @@ const dateData = {
     title: 'How soon do you want us to start?',
     imgs: {
         notSelected: [
-            'https://www.innoapps.com/assets/images/now.svg',
-            'https://www.innoapps.com/assets/images/week.svg',
-            'https://www.innoapps.com/assets/images/month.svg',
+            '/assets/now.svg',
+            '/assets/week.svg',
+            '/assets/month.svg',
         ],
         selected: [
-            'https://www.innoapps.com/assets/images/now-clicked.svg',
-            'https://www.innoapps.com/assets/images/week-clicked.svg',
-            'https://www.innoapps.com/assets/images/month-clicked.svg',
+            '/assets/now-clicked.svg',
+            '/assets/week-clicked.svg',
+            '/assets/month-clicked.svg',
         ],
     },
     texts: ['Now', '1 Week', '1 Month'],
