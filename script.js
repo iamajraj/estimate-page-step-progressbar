@@ -219,6 +219,8 @@ function handleFormSubmit(e) {
 
     // use this data for the form submission - for data structure see the formatData function
     let finalData = formatData(name, email, phone, description)
+
+    console.log(finalData)
 }
 
 function formatData(name, email, phone, description) {
