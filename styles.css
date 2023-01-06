@@ -1,0 +1,387 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #234dc1;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    padding: 24px 136px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+nav .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav .top .logo {
+    width: 160px;
+}
+
+nav .top .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+nav .top .back-btn p {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+nav .stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+nav .stepper li {
+    position: relative;
+    margin-top: 30px;
+    padding: 50px 60px 40px 60px;
+}
+
+nav .stepper li::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #969696;
+    z-index: 2;
+    border-radius: 50%;
+}
+nav .stepper li.active::before {
+    width: 15px;
+    height: 15px;
+    top: 0;
+    border: 6px solid var(--primary-color);
+    background-color: white;
+}
+
+nav .stepper li.done::before {
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    content: url('https://www.innoapps.com/done.6716c30c856ba88ebcc3.svg');
+}
+
+nav .stepper li:not(:nth-child(4)):after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #d8d9dc;
+    top: 12px;
+    z-index: -1;
+    right: -85px;
+}
+
+/* nav .stepper li.active:not(:nth-child(4)):after {
+    background: var(--primary-color);
+} */
+
+nav .stepper li.done:not(:nth-child(4))::after {
+    background: var(--primary-color);
+}
+
+nav .stepper li p {
+    color: #999;
+    font-weight: 600;
+}
+
+nav .stepper li.active p {
+    color: var(--primary-color);
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #fafafa;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper .title {
+    color: #383b4a;
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.wrapper .form-control {
+    display: none;
+}
+
+.card {
+    width: 320px;
+    height: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px 0 rgb(115 134 160 / 10%);
+    padding: 32px 16px;
+    position: relative;
+}
+
+.card .check {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.card .check-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    opacity: 1;
+    background-color: #d9dadd;
+}
+
+.card .check:checked ~ .check-box {
+    background-color: var(--primary-color);
+}
+.card .check:checked ~ .check-box::before {
+    content: url('https://www.innoapps.com/check.4e84d44fb4b4689599df.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    height: 100%;
+}
+
+.card p {
+    font-size: 20px;
+    margin-top: 30px;
+    color: #000;
+    opacity: 0.5;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card .check:checked ~ p {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.card .card-img {
+    width: 100%;
+    height: 70%;
+}
+
+.card-img.selected {
+    display: none;
+}
+
+.card .check:checked ~ .card-img:not(.selected) {
+    display: none;
+}
+.card .check:checked ~ .selected {
+    display: block;
+}
+
+.btn {
+    position: relative;
+    width: 300px;
+    padding: 19px 0;
+    border: none;
+    border-radius: 6px;
+    margin-top: 80px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 16px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn.prev {
+    background-color: transparent;
+    color: #00000050;
+    border: 1px solid #80828c;
+    margin-right: 20px;
+    display: none;
+}
+
+.btn.form-prev {
+    background-color: transparent;
+    color: #00000050;
+    border: 1px solid #80828c;
+    margin-right: 20px;
+}
+
+.btn.next,
+.btn.form-submit {
+    background-color: var(--primary-color);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    inset: 0;
+    top: -70%;
+    left: -50%;
+    border-radius: 50%;
+    opacity: 0.2;
+    transform-origin: center;
+    /* scale: 0; */
+    transition: 0.2s ease-in-out;
+}
+
+.btn.next::before,
+.btn.form-submit::before {
+    background-color: white;
+}
+
+.btn:hover::before {
+    /* scale: 1; */
+    width: 600px;
+    height: 600px;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control .top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.form-control .top div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control label {
+    color: #80828c;
+    font-size: 18px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.form-control input,
+.form-control textarea {
+    font-size: 20px;
+    color: #383b4a;
+    padding-left: 22px;
+    padding-right: 54px;
+    border: 0 solid #d4d8df;
+    border-radius: 5px;
+    outline: none;
+    box-shadow: 0 3px 6px 0 rgb(115 134 160 / 10%);
+}
+
+.form-control > textarea {
+    padding-top: 22px;
+    height: 100px;
+}
+
+.form-control .top input {
+    height: 56px;
+}
+
+.form-control .condition {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.condition p {
+    font-size: 20px;
+    color: #383b4a;
+}
+
+.condition span {
+    font-size: 20px;
+    color: #80828c;
+}
+.condition .accept {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.condition .accept input {
+    position: relative;
+    width: 25px;
+    height: 25px;
+}
+.condition .accept input::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #80828c;
+    border-radius: 6px;
+    border: none;
+}
+.condition .accept input:checked:after {
+    content: url('https://www.innoapps.com/check.4e84d44fb4b4689599df.svg');
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    border: none;
+}
+
+.condition .nda label {
+    color: red;
+    cursor: pointer;
+}
+.condition .nda label:hover {
+    text-decoration: underline;
+}
+
+.form-control .form-btns {
+    margin: 0 auto;
+}
