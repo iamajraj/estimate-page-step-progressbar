@@ -1,31 +1,31 @@
-const allStepperLi = document.querySelectorAll('.stepper li')
-const nextBtn = document.querySelector('.btn.next')
-const prevBtn = document.querySelector('.btn.prev')
-const headerTitle = document.querySelector('.wrapper .title')
+const allStepperLi = document.querySelectorAll('.stepper li');
+const nextBtn = document.querySelector('.btn.next');
+const prevBtn = document.querySelector('.btn.prev');
+const headerTitle = document.querySelector('.wrapper .title');
 const cardImgsNotSelected = document.querySelectorAll(
     '.card .card-img.not-selected'
-)
-const cardImgsSelected = document.querySelectorAll('.card .card-img.selected')
-const cardTexts = document.querySelectorAll('.card p')
-const cardCheckBoxes = document.querySelectorAll('.card .check')
+);
+const cardImgsSelected = document.querySelectorAll('.card .card-img.selected');
+const cardTexts = document.querySelectorAll('.card p');
+const cardCheckBoxes = document.querySelectorAll('.card .check');
 
-const stepsContainer = document.querySelector('.wrapper .steps')
-const formContainer = document.querySelector('.wrapper .form-control')
-const btnsContainer = document.querySelector('.wrapper .btns.outer')
+const stepsContainer = document.querySelector('.wrapper .steps');
+const formContainer = document.querySelector('.wrapper .form-control');
+const btnsContainer = document.querySelector('.wrapper .btns.outer');
 
-const form = document.querySelector('.form-control')
-const nameInp = document.querySelector('.form-control .name')
-const emailInp = document.querySelector('.form-control .email')
-const phoneInp = document.querySelector('.form-control .phone')
-const descriptionInp = document.querySelector('.form-control .description')
+const form = document.querySelector('.form-control');
+const nameInp = document.querySelector('.form-control .name');
+const emailInp = document.querySelector('.form-control .email');
+const phoneInp = document.querySelector('.form-control .phone');
+const descriptionInp = document.querySelector('.form-control .description');
 const conditionCheckBox = document.querySelector(
     '.condition .accept .accept-condition'
-)
-const prevFormBtn = document.querySelector('.form-control .form-prev')
-const submitFormBtn = document.querySelector('.form-control .form-submit')
+);
+const prevFormBtn = document.querySelector('.form-control .form-prev');
+const submitFormBtn = document.querySelector('.form-control .form-submit');
 
-let selected = 0
-let data = {}
+let selected = 0;
+let data = {};
 
 const typeData = {
     name: 'type',
@@ -43,7 +43,7 @@ const typeData = {
         ],
     },
     texts: ['Desktop', 'Mobile', 'Other'],
-}
+};
 const scopeData = {
     name: 'scope',
     title: 'What is the scope of your project?',
@@ -60,7 +60,7 @@ const scopeData = {
         ],
     },
     texts: ['Front-End', 'Back-End', 'Design'],
-}
+};
 const dateData = {
     name: 'date',
     title: 'How soon do you want us to start?',
@@ -77,95 +77,108 @@ const dateData = {
         ],
     },
     texts: ['Now', '1 Week', '1 Month'],
-}
+};
 
-const cardData = [typeData, scopeData, dateData]
+const cardData = [typeData, scopeData, dateData];
 
 function setData() {
-    const data = cardData[selected]
+    const data = cardData[selected];
 
-    headerTitle.textContent = data.title
+    headerTitle.textContent = data.title;
     data.imgs.notSelected.forEach((url, index) => {
-        cardImgsNotSelected[index].src = url
-    })
+        cardImgsNotSelected[index].src = url;
+    });
     data.imgs.selected.forEach((url, index) => {
-        cardImgsSelected[index].src = url
-    })
+        cardImgsSelected[index].src = url;
+    });
     data.texts.forEach((t, i) => {
-        cardTexts[i].textContent = t
-    })
+        cardTexts[i].textContent = t;
+    });
     cardCheckBoxes.forEach((c, i) => {
-        c.setAttribute('data-id', data.texts[i])
-    })
-    setCardCheckBox()
+        c.setAttribute('data-id', data.texts[i]);
+    });
+    setCardCheckBox();
 }
 
 function setCardCheckBox() {
-    let selectedCard = cardData[selected]
-    cardCheckBoxes.forEach((c) => (c.checked = false))
+    let selectedCard = cardData[selected];
+    cardCheckBoxes.forEach((c) => (c.checked = false));
     if (data[selectedCard.name]) {
         Object.entries(data[selectedCard.name]).forEach(([index, value]) => {
             cardCheckBoxes.forEach((c) => {
-                cardCheckBoxes[index].checked = true
-            })
-        })
+                cardCheckBoxes[index].checked = true;
+            });
+        });
     }
 }
 
 function goBack() {
     if (selected === 0) {
-        allStepperLi[selected].classList.remove('done')
+        allStepperLi[selected].classList.remove('done');
     } else {
-        allStepperLi[selected].classList.remove('active')
-        allStepperLi[selected].classList.remove('done')
-        selected -= 1
+        allStepperLi[selected].classList.remove('active');
+        allStepperLi[selected].classList.remove('done');
+        selected -= 1;
     }
-    allStepperLi[selected].classList.remove('done')
+    allStepperLi[selected].classList.remove('done');
 
     if (selected === 0) {
-        prevBtn.style.display = 'none'
+        prevBtn.style.display = 'none';
     }
     if (selected !== allStepperLi.length - 1) {
-        stepsContainer.style.display = 'flex'
-        btnsContainer.style.display = 'block'
-        formContainer.style.display = 'none'
-        nextBtn.textContent = 'Continue'
+        stepsContainer.style.display = 'flex';
+        btnsContainer.style.display = 'block';
+        formContainer.style.display = 'none';
+        nextBtn.textContent = 'Continue';
     }
-    setData()
+    setData();
+
+    if (typeof data[cardData[selected]?.name] === 'undefined') {
+        nextBtn.disabled = true;
+    } else {
+        nextBtn.disabled = false;
+    }
 }
 
 function goNext() {
-    allStepperLi[selected].classList.add('done')
-    selected = selected === allStepperLi.length - 1 ? selected : (selected += 1)
-    allStepperLi[selected].classList.add('active')
+    allStepperLi[selected].classList.add('done');
+    selected =
+        selected === allStepperLi.length - 1 ? selected : (selected += 1);
+    allStepperLi[selected].classList.add('active');
 
     if (selected > 0) {
-        prevBtn.style.display = 'inline-block'
+        prevBtn.style.display = 'inline-block';
     }
 
     if (selected === allStepperLi.length - 1) {
-        stepsContainer.style.display = 'none'
-        formContainer.style.display = 'flex'
-        headerTitle.textContent = 'Fill your contact details.'
-        btnsContainer.style.display = 'none'
+        stepsContainer.style.display = 'none';
+        formContainer.style.display = 'flex';
+        headerTitle.textContent = 'Fill your contact details.';
+        btnsContainer.style.display = 'none';
     } else {
-        setData()
+        setData();
+    }
+
+    if (typeof data[cardData[selected]?.name] === 'undefined') {
+        nextBtn.disabled = true;
+    } else {
+        nextBtn.disabled = false;
     }
 }
 
 cardCheckBoxes.forEach((c, index) => {
     c.addEventListener('change', (e) => {
-        let dataFor = cardData[selected]
-        let checkedBox = e.target.getAttribute('data-id')
-        let isChecked = e.target.checked
+        let dataFor = cardData[selected];
+        let checkedBox = e.target.getAttribute('data-id');
+        let isChecked = e.target.checked;
 
         // For Date where user can select only one card
         if (selected === 2) {
-            let tmpData = data[dataFor.name]
+            let tmpData = data[dataFor.name];
             if (tmpData) {
                 if (Object.values(tmpData).length === 1) {
-                    data[dataFor.name] = {}
-                    setCardCheckBox()
+                    data[dataFor.name] = {};
+                    setCardCheckBox();
                 }
             }
         }
@@ -173,16 +186,16 @@ cardCheckBoxes.forEach((c, index) => {
         // For Type where user can select only `Others` type of other than this
         if (selected === 0) {
             if (checkedBox === 'Other') {
-                data[dataFor.name] = {}
-                setCardCheckBox()
+                data[dataFor.name] = {};
+                setCardCheckBox();
             } else {
                 if (data[dataFor.name]) {
                     Object.values(data[dataFor.name]).forEach((c) => {
                         if (c === 'Other') {
-                            data[dataFor.name] = {}
-                            setCardCheckBox()
+                            data[dataFor.name] = {};
+                            setCardCheckBox();
                         }
-                    })
+                    });
                 }
             }
         }
@@ -191,40 +204,46 @@ cardCheckBoxes.forEach((c, index) => {
             data[dataFor.name] = {
                 ...data[dataFor.name],
                 [index]: checkedBox,
-            }
-            setCardCheckBox()
+            };
+            setCardCheckBox();
         } else {
-            delete data[dataFor.name][index]
+            delete data[dataFor.name][index];
         }
 
-        formatData()
-    })
-})
+        formatData();
 
-nextBtn.addEventListener('click', goNext)
-prevBtn.addEventListener('click', goBack)
-prevFormBtn.addEventListener('click', goBack)
-form.addEventListener('submit', handleFormSubmit)
+        if (Object.keys(data[dataFor.name]).length > 0) {
+            nextBtn.disabled = false;
+        } else {
+            nextBtn.disabled = true;
+        }
+    });
+});
+
+nextBtn.addEventListener('click', goNext);
+prevBtn.addEventListener('click', goBack);
+prevFormBtn.addEventListener('click', goBack);
+form.addEventListener('submit', handleFormSubmit);
 
 function handleFormSubmit(e) {
-    e.preventDefault()
-    let isConditionChecked = conditionCheckBox.checked
-    let name = nameInp.value
-    let email = emailInp.value
-    let phone = phoneInp.value
-    let description = descriptionInp.value
+    e.preventDefault();
+    let isConditionChecked = conditionCheckBox.checked;
+    let name = nameInp.value;
+    let email = emailInp.value;
+    let phone = phoneInp.value;
+    let description = descriptionInp.value;
 
-    if (!isConditionChecked) return
-    if (!name || !email || !description) return
+    if (!isConditionChecked) return;
+    if (!name || !email || !description) return;
 
     // use this data for the form submission - for data structure see the formatData function
-    let finalData = formatData(name, email, phone, description)
+    let finalData = formatData(name, email, phone, description);
 
-    console.log(finalData)
+    console.log(finalData);
 }
 
 function formatData(name, email, phone, description) {
-    let dataKey = Object.keys(data)
+    let dataKey = Object.keys(data);
     // this is how the data is being set
     let finalData = {
         name,
@@ -236,15 +255,15 @@ function formatData(name, email, phone, description) {
             scope: [],
             date: [],
         },
-    }
+    };
     Object.values(data).forEach((d, index) => {
         Object.values(data[dataKey[index]]).forEach((v) => {
             finalData.data[dataKey[index]] = [
                 ...finalData.data[dataKey[index]],
                 v,
-            ]
-        })
-    })
+            ];
+        });
+    });
 
-    return finalData
+    return finalData;
 }
